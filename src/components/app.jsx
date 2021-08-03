@@ -19,7 +19,7 @@ const App = ({ fetchUsers, fetchTodos }) => (
 	<div className="container mt-3">
 		<FetchButton action={fetchUsers} name="Fetch Users" />
 		<FetchButton action={fetchTodos} name="Fetch Todos" />
-		<Todo.List />
+		<Todo.List per={10} />
 	</div>
 );
 

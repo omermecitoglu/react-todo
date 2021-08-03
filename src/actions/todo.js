@@ -3,4 +3,8 @@ export default {
 		type: "SEED_TODO_LIST",
 		list,
 	}),
+	setPage: (page) => ({
+		type: "SET_TODO_PAGE",
+		page,
+	}),
 };

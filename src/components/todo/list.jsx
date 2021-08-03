@@ -4,7 +4,7 @@ import actions from "~/actions/todo";
 import TodoItem from "./item";
 import Pagination from "../pagination";
 
-const TodoList = ({ users, todos, page, per, setPage }) => (
+const TodoList = ({ users, todos, page, per, setPage, sort, sorted, reversed }) => (
 	<div>
 		<table className="table">
 			<thead>
@@ -12,7 +12,11 @@ const TodoList = ({ users, todos, page, per, setPage }) => (
 					<th scope="col">#</th>
 					<th scope="col">Title</th>
 					<th scope="col">Assignee</th>
-					<th scope="col">Status</th>
+					<th scope="col" onClick={() => sort("completed", sorted === "completed" && !reversed)}>
+						Status
+						{sorted === "completed" && !reversed && "\u2304"}
+						{sorted === "completed" && reversed && "\u2303"}
+					</th>
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
@@ -39,12 +43,18 @@ const mstp = ({ user, todo }) => ({
 	users: user.list,
 	todos: todo.list,
 	page: todo.page,
+	sorted: todo.sorted,
+	reversed: todo.reversed,
 });
 
 const mdtp = (dispatch) => ({
 	setPage: (e, page) => {
 		e.preventDefault();
 		dispatch(actions.setPage(page));
+	},
+	sort: (field, reverse) => {
+		console.log(field, reverse);
+		dispatch(actions.sort(field, reverse));
 	},
 });
 

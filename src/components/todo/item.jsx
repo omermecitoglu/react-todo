@@ -5,7 +5,7 @@ const TodoItem = ({ id, user, title, completed }) => (
 		<th scope="row">{id}</th>
 		<td>{title}</td>
 		<td>{user?.name || "???"}</td>
-		<td>{status ? "Done" : "In Progress"}</td>
+		<td>{completed ? "Done" : "In Progress"}</td>
 		<td>&nbsp;</td>
 	</tr>
 );

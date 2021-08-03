@@ -1,6 +1,13 @@
+function sort(list, key, reverse) {
+	list.sort((a, b) => (a[key] - b[key]) * (reverse ? -1 : 1));
+	return list;
+}
+
 const defaults = {
 	list: [],
 	page: 0,
+	sorted: null,
+	reversed: false,
 };
 
 export default (state = defaults, action) => {
@@ -9,6 +16,17 @@ export default (state = defaults, action) => {
 			return {
 				...state,
 				list: action.list,
+				page: 0,
+				sorted: null,
+				reversed: false,
+			};
+		case "SORT_TODO_LIST":
+			return {
+				...state,
+				list: sort(state.list, action.field, action.reverse),
+				page: 0,
+				sorted: action.field,
+				reversed: action.reverse,
 			};
 		case "SET_TODO_PAGE":
 			return {

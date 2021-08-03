@@ -1,0 +1,39 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true,
+	},
+	"plugins": [
+		"react",
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+	],
+	"parser": "@babel/eslint-parser",
+	"parserOptions": {
+		"ecmaVersion": 12,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+		},
+	},
+	"rules": {
+		"indent": ["error", "tab", { "SwitchCase": 1 }],
+		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "double"],
+		"quote-props": ["error", "consistent-as-needed"],
+		"semi": ["error", "always"],
+		"no-var": ["error"],
+		"prefer-const": ["error"],
+		"comma-dangle": ["error", "always-multiline"],
+		"no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
+		"eqeqeq": ["error", "always"],
+		"grouped-accessor-pairs": ["error"],
+		"no-constructor-return": ["error"],
+		"default-case": ["error"],
+		"default-case-last": ["error"],
+		"react/prop-types": ["off"],
+	},
+	"globals": {},
+}

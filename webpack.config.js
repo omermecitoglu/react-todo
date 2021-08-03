@@ -2,6 +2,7 @@ const path = require('path');
 const TerserPlugin = require("terser-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, argv) => ({
 	target: 'web',
@@ -18,6 +19,9 @@ module.exports = (env, argv) => ({
 		new HtmlWebpackPlugin({
 			filename: './index.html',
 			inject: 'body',
+		}),
+		new MiniCssExtractPlugin({
+			filename: 'css/style.css',
 		}),
 	],
 	optimization: {
@@ -40,6 +44,47 @@ module.exports = (env, argv) => ({
 				test: /\.(js|jsx)/,
 				exclude: /node_modules/,
 				use: ["babel-loader"],
+			},
+			{
+				test: /\.(scss)$/,
+				use: [
+					{
+						loader: argv.mode !== 'production' ?
+						"style-loader" // inject CSS to page
+						:
+						MiniCssExtractPlugin.loader,
+					},
+					/*{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							// publicPath: '.',
+						},
+					},*/
+					{
+						// translates CSS into CommonJS modules
+						loader: 'css-loader',
+					},
+					{
+						// Run postcss actions
+						loader: 'postcss-loader',
+						options: {
+							// `postcssOptions` is needed for postcss 8.x;
+							// if you use postcss 7.x skip the key
+							postcssOptions: {
+								// postcss plugins, can be exported to postcss.config.js
+								plugins: function () {
+									return [
+										require('autoprefixer')
+									];
+								},
+							},
+						},
+					},
+					{
+						// compiles Sass to CSS
+						loader: 'sass-loader'
+					},
+				],
 			},
 			{
 				test: /\.(png|jpg|gif)$/,

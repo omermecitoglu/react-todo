@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import todo_actions from "~/actions/todo";
+import Todo from "./todo";
 import "~/scss/bootstrap.scss";
 
 const FetchButton = ({ action, name }) => (
@@ -14,8 +15,9 @@ const FetchButton = ({ action, name }) => (
 );
 
 const App = ({ fetchTodos }) => (
-	<div>
+	<div className="container">
 		<FetchButton action={fetchTodos} name="Fetch Todos" />
+		<Todo.List />
 	</div>
 );
 

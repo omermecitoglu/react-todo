@@ -33,6 +33,11 @@ export default (state = defaults, action) => {
 				...state,
 				page: action.page,
 			};
+		case "REMOVE_TODO":
+			return {
+				...state,
+				list: state.list.filter(t=>t.id!==action.todoId),
+			};
 		case "RESET_TODOS":
 			return defaults;
 		default:

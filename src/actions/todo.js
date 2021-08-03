@@ -12,4 +12,8 @@ export default {
 		type: "SET_TODO_PAGE",
 		page,
 	}),
+	remove: (todoId) => ({
+		type: "REMOVE_TODO",
+		todoId,
+	}),
 };

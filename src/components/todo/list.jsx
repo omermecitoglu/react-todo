@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import TodoItem from "./item";
 
-const TodoList = ({ todos }) => (
+const TodoList = ({ users, todos }) => (
 	<table className="table">
 		<thead>
 			<tr>
@@ -18,14 +18,16 @@ const TodoList = ({ todos }) => (
 				<TodoItem
 					key={todo.id}
 					{...todo}
+					user={users.find(u=>u.id===todo.userId)}
 				/>,
 			)}
 		</tbody>
 	</table>
 );
 
-const mstp = ({ todo }) => ({
+const mstp = ({ user, todo }) => ({
 	todos: todo.list,
+	users: user.list,
 });
 
 export default connect(mstp, null)(TodoList);

@@ -27,7 +27,7 @@ const TodoList = ({ users, todos, page, per, setPage, sort, sorted, reversed }) 
 						key={todo.id}
 						{...todo}
 						user={users.find(u=>u.id===todo.userId)}
-					/>,
+					/>
 				)}
 			</tbody>
 		</table>

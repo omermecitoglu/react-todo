@@ -22,7 +22,7 @@ const Pagination = ({ length, page, per, action }) => (
 					index={index}
 					page={page}
 					action={action}
-				/>,
+				/>
 			)}
 			<li className="page-item">
 				<a

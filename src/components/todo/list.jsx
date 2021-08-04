@@ -55,7 +55,6 @@ const mdtp = (dispatch) => ({
 		dispatch(actions.setPage(page));
 	},
 	sort: (field, reverse) => {
-		console.log(field, reverse);
 		dispatch(actions.sort(field, reverse));
 	},
 });

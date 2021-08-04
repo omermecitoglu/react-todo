@@ -46,16 +46,30 @@ class ModalContainer extends React.Component {
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
-							<h5 className="modal-title" id="todoModalLabel">{this.props.title}</h5>
+							<h5 className="modal-title" id="todoModalLabel">Edit Task</h5>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div className="modal-body">
-							<input type="text" value={this.state.title} onChange={this.handleChange} />
-							<input
-								type="checkbox"
-								checked={this.state.completed}
-								onChange={this.handleInputChange}
-							/>
+							<div className="mb-3">
+								<label htmlFor="todo_title" className="form-label">Title</label>
+								<input
+									id="todo_title"
+									type="text"
+									className="form-control"
+									value={this.state.title}
+									onChange={this.handleChange}
+								/>
+							</div>
+							<div className="mb-3 form-check">
+								<input
+									id="toto_status"
+									type="checkbox"
+									className="form-check-input"
+									checked={this.state.completed}
+									onChange={this.handleInputChange}
+								/>
+								<label className="form-check-label" htmlFor="toto_status">Completed</label>
+							</div>
 						</div>
 						<div className="modal-footer">
 							<button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={this.updateData}>Save</button>

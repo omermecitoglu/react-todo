@@ -12,6 +12,16 @@ export default {
 		type: "SET_TODO_PAGE",
 		page,
 	}),
+	edit: (todoId) => ({
+		type: "EDIT_TODO",
+		todoId,
+	}),
+	update: (todoId, title, completed) => ({
+		type: "UPDATE_TODO",
+		todoId,
+		title,
+		completed,
+	}),
 	remove: (todoId) => ({
 		type: "REMOVE_TODO",
 		todoId,

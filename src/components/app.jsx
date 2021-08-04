@@ -18,7 +18,7 @@ const FetchButton = ({ action, name }) => (
 const App = ({ fetchUsers, fetchTodos }) => (
 	<div className="container mt-3">
 		<FetchButton action={fetchUsers} name="Fetch Users" />
-		<FetchButton action={fetchTodos} name="Fetch Todos" />
+		<FetchButton action={fetchTodos} name="Fetch Tasks" />
 		<Todo.List per={10} />
 	</div>
 );

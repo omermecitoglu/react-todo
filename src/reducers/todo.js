@@ -8,6 +8,7 @@ const defaults = {
 	page: 0,
 	sorted: null,
 	reversed: false,
+	edit: null,
 };
 
 export default (state = defaults, action) => {
@@ -32,6 +33,20 @@ export default (state = defaults, action) => {
 			return {
 				...state,
 				page: action.page,
+			};
+		case "EDIT_TODO":
+			return {
+				...state,
+				edit: state.list.find(t=>t.id===action.todoId),
+			};
+		case "UPDATE_TODO":
+			return {
+				...state,
+				list: state.list.map(t=>t.id!==action.todoId ? t : {
+					...t,
+					title: action.title,
+					completed: action.completed,
+				}),
 			};
 		case "REMOVE_TODO":
 			return {

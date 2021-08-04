@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import actions from "~/actions/todo";
 import TodoItem from "./item";
+import Modal from "./modal";
 import Pagination from "../pagination";
 
 const TodoList = ({ users, todos, page, per, setPage, sort, sorted, reversed }) => (
@@ -36,6 +37,7 @@ const TodoList = ({ users, todos, page, per, setPage, sort, sorted, reversed }) 
 			per={per}
 			action={setPage}
 		/>
+		<Modal />
 	</div>
 );
 
